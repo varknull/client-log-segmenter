@@ -2,6 +2,10 @@ package com.scraping.application;
 
 import java.util.Objects;
 
+/**
+ *	Product bean 
+ *
+ */
 public class Product {
 
 	private String title;
@@ -37,7 +41,8 @@ public class Product {
 	public boolean equals(Object obj) {
 		if (obj instanceof Product) {
 			Product other = (Product) obj;
-			return Objects.equals(this.title, other.title) &&
+			
+			return	Objects.equals(this.title, other.title) &&
 					Objects.equals(this.size, other.size) &&
 					Objects.equals(this.unit_price, other.unit_price) &&
 					Objects.equals(this.description, other.description);
@@ -48,8 +53,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [title=" + title + ", size=" + size + ", unit_price=" + unit_price + ", description="
-				+ description + "]";
+		return "Product [title=" + title + ", size=" + size + ", unit_price=" + unit_price + ", description="+ description + "]";
 	}
 
 }

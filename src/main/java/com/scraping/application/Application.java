@@ -24,7 +24,9 @@ public class Application implements CommandLineRunner {
         SpringApplication.run(Application.class, args).close();
     }
  
-
+	/**
+	 * Application main
+	 */
     @Override
     public void run(String... args) throws Exception {
     	
