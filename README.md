@@ -1,19 +1,24 @@
 
+# Client-log-segmenter
 
-# Jsoup-scraper
+Program that makes n http requests to the log files residing under baseUrl (eg. http://localhost:8080/logs//test0.log).
+A Producer thread for each http request reads the log (test#.log) InputStream line by line, each line is add to a
+TreeSet (sorted by timestamp) in a ConcurrentHashMap segmented by clientId. Once all the threads have finished
+a Consumer writes a set of output files, each containing the all the input lines for a specific client sorted by timestamp.
 
-Simple example to scrape html with spring boot and jsoup
-A json string is produced from a Sainsbury page
 
 ## Test
 
-run gradle test for the junit test
+mvn test for the junit test
+
 
 ## Usage
 
-gradle run or run the Application class as java application
+* run the Application class as java application (takes the parameters from application.properties)
+* mvn package, then java -jar ./target/client-log-segmenter-0.1.0.jar https://www.alephd.com/logs/ 5
+* mvn spring-boot:run -Drun.arguments="arg1,arg2"
+
 
 ## Dependences
 
-- Gradle 2.1, Java 8
-- Spring Boot, JSoup (handled by gradle)
+- Maven, Java 8

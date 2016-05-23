@@ -37,3 +37,4 @@ build/
 bin/
 /gradlew
 /gradlew.bat
+/target/
