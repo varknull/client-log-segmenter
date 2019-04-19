@@ -1,7 +1,7 @@
 
 # Client-log-segmenter
 
-Application that makes N http requests to the log files residing under a website URL (e.g. `http://localhost:8080/logs/`) which has an arbitrary number of files and listing of is forbidden.
+Application that makes N http requests to the log files residing under a website URL (e.g. `http://localhost:8080/logs/`) which has an arbitrary number of files where listing of the directory is forbidden.
 
 For example we have: `http://localhost:8080/logs/test0.log`, ..., `http://localhost:8080/logs/testN.log`
 
