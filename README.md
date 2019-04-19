@@ -13,9 +13,10 @@ Where:
 - `k` = string of some random characters
 - `client` = unique string identifying a client
 - `timestamp` = unix timestamp
- 
 
-The application read the input files and then produce a set of output files containing all the input lines for a specific client. Thus segmenting the input logs for each client. The contents of each output file is sorted by timestamp.
+A producer thread for each http request reads the log InputStream line by line, each line is add to a
+TreeSet (sorted by timestamp) in a ConcurrentHashMap segmented by clientId. Once all the threads have finished
+a Consumer writes a set of output files containing the input lines for a specific client sorted by timestamp. Thus the input logs are segmented for each client. 
 
 Example of output files:
 
@@ -33,11 +34,6 @@ HG09B7H04ERWXT16C87H client=client1&timestamp=2446
 The application:
 - accept a parameter `base_url`, rapresenting the url to scan, for example `http://localhost:8080/logs/`
 - accept a parameter `number_of_files`, indicating how many files to parse
-
-
-A Producer thread for each http request reads the log InputStream line by line, each line is add to a
-TreeSet (sorted by timestamp) in a ConcurrentHashMap segmented by clientId. Once all the threads have finished
-a Consumer writes a set of output files containing the input lines for a specific client sorted by timestamp.
 
 ## Test
 
